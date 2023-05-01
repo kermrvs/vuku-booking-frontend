@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   head: {
     link: {
       rel: "stylesheet",
-      href: "https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
+      href: "https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css"
     }
   },
   modules: [

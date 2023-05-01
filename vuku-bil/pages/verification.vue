@@ -19,7 +19,9 @@
       >
       </v-text-field>
     </div>
-    <v-btn class="phone-btn" @click="toVerification">Bekrefte</v-btn>
+    <div class="d-flex justify-center">
+      <v-btn class="phone-btn" @click="toVerification">Bekrefte</v-btn>
+    </div>
     <div class="code-wrapper-helper">
       <div class="send-code">Send Kode Igjen</div>
       <div class="number">Endre telefonnummer</div>

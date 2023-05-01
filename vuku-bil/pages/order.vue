@@ -27,11 +27,14 @@
           <div v-else>
             <person-info></person-info>
           </div>
-          <v-btn class="next-btn" v-if="item.component === 'Service' || item.component === 'Time'">Fortsette</v-btn>
-          <v-btn class="next-btn" v-else @click="toVerification">Booking</v-btn>
+          <div class="d-flex justify-center">
+            <v-btn class="next-btn" v-if="item.component === 'Service' || item.component === 'Time'">Fortsette</v-btn>
+            <v-btn class="next-btn" v-else @click="toVerification">Booking</v-btn>
+          </div>
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
+    <v-divider class="mt-4"></v-divider>
   </div>
 </template>
 

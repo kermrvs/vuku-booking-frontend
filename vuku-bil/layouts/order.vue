@@ -3,7 +3,7 @@
     <v-container class="container">
       <slot/>
     </v-container>
-    <TheFooter class="my-footer"/>
+    <TheFooter class="my-footer mb-4"/>
   </div>
 </template>
 

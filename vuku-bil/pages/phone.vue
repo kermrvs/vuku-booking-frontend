@@ -17,7 +17,9 @@
       >
       </v-text-field>
     </div>
-    <v-btn class="phone-btn" @click="toVerification">Fortsette</v-btn>
+    <div class="d-flex justify-center">
+      <v-btn class="phone-btn" @click="toVerification">Fortsette</v-btn>
+    </div>
   </div>
 </template>
 

@@ -24,8 +24,9 @@
       <h5>Melding til verkstedet</h5>
       <v-textarea placeholder="Text"  class="text-fieled"></v-textarea>
     </div>
-    <v-checkbox v-model="checkbox" color="red" value="1" label="Bekreft vår privacy police for å bruke vår booking tjeneste" append-icon="success"></v-checkbox>
-    <v-checkbox v-model="checkbox" color="red" value="2" label="Bekreft om du ønsker viktig info og reklame fra oss"></v-checkbox>
+
+    <v-checkbox v-model="checkbox" color="black" value="1" label="Bekreft vår privacy police for å bruke vår booking tjeneste" append-icon="success"></v-checkbox>
+    <v-checkbox v-model="checkbox" color="black" value="2" label="Bekreft om du ønsker viktig info og reklame fra oss"></v-checkbox>
   </div>
 </template>
 
