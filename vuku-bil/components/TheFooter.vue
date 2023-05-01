@@ -1,0 +1,18 @@
+<template>
+  <v-img src="/logo.png" class="logo"></v-img>
+</template>
+
+<script>
+export default {
+  name: "footer"
+}
+</script>
+
+<style lang="scss" scoped>
+div {
+  .logo {
+    width: 145px;
+    height: 68px;
+  }
+}
+</style>
