@@ -12,7 +12,7 @@
         <v-expansion-panel-title>
           <div class="d-flex title">
             <div class="circle">
-              {{ index }}
+              {{ index + 1 }}
             </div>
             {{item.title}}
           </div>

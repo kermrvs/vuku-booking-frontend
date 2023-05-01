@@ -1,5 +1,7 @@
 <template>
-  <v-img src="/logo.png" class="logo"></v-img>
+  <div>
+    <v-img src="/logo.png" class="logo"></v-img>
+  </div>
 </template>
 
 <script>

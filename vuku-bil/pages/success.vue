@@ -6,26 +6,26 @@
     <h5 class="mt-6">Takk for din bestilling!</h5>
     <p class="mt-2 text-center">Du vil få en bekreftelse på SMS så snart vår verksteds-mester har fått sett på din booking. Du bil også få tilsendt en påminnelse dagen før din time.</p>
     <div class="divider mt-3"></div>
-    <h5 class="mt-7">Tjenester</h5>
+    <h5 class="mt-7 basket-title">Tjenester</h5>
     <div class="d-flex justify-space-between service">
-      <div>EU-kontroll opp til 3500kg</div>
+      <div class="service-name">EU-kontroll opp til 3500kg</div>
       <div>1490,-</div>
     </div>
     <div class="d-flex justify-space-between service">
-      <div>EU-kontroll opp til 3500kg</div>
+      <div class="service-name">EU-kontroll opp til 3500kg</div>
       <div>1490,-</div>
     </div>
     <div class="d-flex justify-space-between service">
-      <div>Total</div>
+      <div class="total">Total</div>
       <div>1490,-</div>
     </div>
-    <h5>Tidspunkt</h5>
-    <div>
+    <h5 class="basket-title mt-2">Tidspunkt</h5>
+    <div class="d-flex service justify-space-between">
       <div>Valgt dato</div>
       <div>22 april 2023</div>
     </div>
-    <div>
-      <h5></h5>
+    <div class="info-block">
+      <h5 class="basket-title">Personinformasjon</h5>
       <div>Cameron Williamson</div>
       <div>+47 111 111 111 11</div>
       <div>qwertyu@gmail.com</div>
@@ -51,6 +51,7 @@ definePageMeta({
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 12px;
 
   .main-img {
     width: 148px;
@@ -76,8 +77,34 @@ definePageMeta({
 
   .service {
     width: 100%;
+
+    .service-name {
+      font-weight: 400;
+      font-size: 14px;
+      color: #8C8C8C;
+      margin-top: 12px;
+    }
+
+    .total {
+      font-weight: 400;
+      font-size: 14px;
+      color: $text;
+      margin-top: 14px;
+    }
   }
 
+  .basket-title {
+    width: 100%;
+  }
+
+  .info-block {
+    margin-top: 16px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    align-items: flex-start;
+  }
 }
 
 </style>

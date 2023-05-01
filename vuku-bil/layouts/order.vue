@@ -1,6 +1,6 @@
 <template>
-  <div className="main">
-    <v-container className="container">
+  <div class="main">
+    <v-container class="container">
       <slot/>
     </v-container>
     <TheFooter class="my-footer"/>
@@ -18,7 +18,9 @@ export default {
 .main {
 
   .my-footer {
-    margin: 44px auto 23px auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>

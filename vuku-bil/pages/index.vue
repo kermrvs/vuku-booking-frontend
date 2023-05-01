@@ -6,7 +6,7 @@
       <p class="d-flex text-center">Her kan du enkelt velge tjenester og legge inn bookinger enkelt fra din egen stue eller fra hytta.
         Du vil motta en bekreftelses SMS så snart vår
         verkstedsmester har sett på bookingen din. Du får også en påminnelse dagen i forkant av din booking.</p>
-      <v-btn class="booking-btn" @click.prevent="toPhone">Booking</v-btn>
+      <v-btn class="booking-btn" @click="toPhone">Booking</v-btn>
     </div>
   </div>
 </template>

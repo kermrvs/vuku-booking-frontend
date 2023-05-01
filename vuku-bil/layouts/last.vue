@@ -1,6 +1,6 @@
 <template>
-  <div className="main">
-    <v-container className="container">
+  <div class="main">
+    <v-container class="container">
       <slot/>
     </v-container>
     <TheFooter class="my-footer"/>
@@ -16,20 +16,21 @@ export default {
 <style lang="scss" scoped>
 
 .main {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
-  .container {
-    padding-bottom: 65px;
-  }
-
+  //min-height: 100svh;
+  //display: flex;
+  //flex-direction: column;
+  //align-items: center;
+  //justify-content: center;
+  //position: relative;
+  //
+  //.container {
+  //  padding-bottom: 65px;
+  //}
+  //
   .my-footer {
-    position: absolute;
-    bottom: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>
