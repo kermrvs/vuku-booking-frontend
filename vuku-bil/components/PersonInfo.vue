@@ -2,27 +2,27 @@
   <div class="person-info-wrapper">
     <div>
       <h5>Fult navn</h5>
-      <v-text-field placeholder="Velg ønsket dato" class="text-fieled"></v-text-field>
+      <v-text-field placeholder="Velg ønsket dato" class="text-fieled" variant="outlined"></v-text-field>
     </div>
     <div>
       <h5>Telefonnummer</h5>
-      <v-text-field placeholder="Velg ønsket dato"  class="text-fieled"></v-text-field>
+      <v-text-field placeholder="Velg ønsket dato"  class="text-fieled" variant="outlined"></v-text-field>
     </div>
     <div>
       <h5>E-post</h5>
-      <v-text-field placeholder="Velg ønsket dato"  class="text-fieled"></v-text-field>
+      <v-text-field placeholder="Velg ønsket dato"  class="text-fieled" variant="outlined"></v-text-field>
     </div>
     <div>
       <h5>Regnummer / chasisnr</h5>
-      <v-text-field placeholder="Velg ønsket dato"  class="text-fieled"></v-text-field>
+      <v-text-field placeholder="Velg ønsket dato"  class="text-fieled" variant="outlined"></v-text-field>
     </div>
     <div>
       <h5>KM-stand</h5>
-      <v-text-field placeholder="Velg ønsket dato"  class="text-fieled"></v-text-field>
+      <v-text-field placeholder="Velg ønsket dato"  class="text-fieled" variant="outlined"></v-text-field>
     </div>
     <div>
       <h5>Melding til verkstedet</h5>
-      <v-textarea placeholder="Text"  class="text-fieled"></v-textarea>
+      <v-textarea placeholder="Text"  class="text-fieled" variant="outlined"></v-textarea>
     </div>
 
     <v-checkbox v-model="checkbox" color="black" value="1" label="Bekreft vår privacy police for å bruke vår booking tjeneste" append-icon="success"></v-checkbox>

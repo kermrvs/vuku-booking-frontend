@@ -7,8 +7,8 @@
       </div>
     </div>
     <p>Velg tjenestene du trenger og fyll inn nødvendige data</p>
-    <v-expansion-panels class="my-list">
-      <v-expansion-panel v-for="(item,index) in panels" :key="index">
+    <v-expansion-panels class="my-list" v-model="panel" multiple>
+      <v-expansion-panel v-for="(item,index) in panels" :key="index"  :disabled="item.component !== currentStep" @click="open" :value="item.component">
         <v-expansion-panel-title>
           <div class="d-flex title">
             <div class="circle">
@@ -19,7 +19,7 @@
         </v-expansion-panel-title>
         <v-expansion-panel-text>
           <div v-if="item.component === 'Service'">
-            <service :services="services"/>
+            <service :services="services" v-show="currentStep === item.component"/>
           </div>
           <div v-else-if="item.component === 'Time'" class="time-picker-wrapper">
             <date-picker
@@ -27,15 +27,25 @@
               :min-date="new Date()"
               :enable-time-picker="false"
               format="dd MMM yyyy"
+              class="date"
+              teleport-center
+              calendar-cell-class-name="dp-custom-cell"
+              v-show="currentStep === item.component"
             >
             </date-picker>
+            <time-picker  v-show="currentStep === item.component"></time-picker>
           </div>
-          <div v-else>
-            <person-info></person-info>
+          <div v-else-if="item.component === 'Person'">
+            <person-info
+              v-show="currentStep === item.component"
+            ></person-info>
           </div>
           <div class="d-flex justify-center">
-            <v-btn class="next-btn" v-if="item.component === 'Service' || item.component === 'Time'">Fortsette</v-btn>
-            <v-btn class="next-btn" v-else @click="toVerification">Booking</v-btn>
+            <v-btn class="next-btn" v-if="(item.component === 'Service' || item.component === 'Time') && !item.isSave" @click="nextStep(item.component,index), item.isSave = true">Fortsette</v-btn>
+            <v-btn class="next-btn" v-else-if="item.component === 'Person'" @click="toVerification">Booking</v-btn>
+          </div>
+          <div v-if="item.isSave" class="d-flex justify-center">
+            <v-btn class="prev-btn" @click="openOnEdit(item, index)">Endring</v-btn>
           </div>
         </v-expansion-panel-text>
       </v-expansion-panel>
@@ -45,22 +55,28 @@
 </template>
 
 <script setup>
+
 definePageMeta({
   layout: 'order'
 })
-const date = ref();
+const date = ref()
+const panel = ref([])
+let currentStep = ref('Service')
 const panels = ref([
   {
     title: 'Tjenester',
-    component: 'Service'
+    component: 'Service',
+    isSave: false,
   },
   {
     title: 'Tidspunkt',
-    component: 'Time'
+    component: 'Time',
+    isSave: false,
   },
   {
     title: 'Personinformasjon',
-    component: ''
+    component: 'Person',
+    isSave: false,
   },
   ])
 const services = ref([
@@ -91,16 +107,42 @@ const services = ref([
 ])
 const router = useRouter()
 
-function toVerification()  {
+function toVerification() {
   router.push('/success')
 }
 
-const format = (date) => {
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
+function nextStep(step, index) {
+  if(step === 'Service') {
+    currentStep.value = 'Time'
+    open('Time')
+  } else if(step === 'Time') {
+    currentStep.value = 'Person'
+    open('Person')
+  }
+}
 
-  return `Selected date is ${day}/${month}/${year}`;
+function open(index) {
+  panel.value.push(index)
+}
+
+function close(index) {
+  panel.value.push(index)
+}
+
+function openOnEdit(step) {
+  // if(step === 'Service') {
+  //   currentStep.value = 'Time'
+  //   open(index + 1)
+  // } else if(step === 'Time') {
+  //   currentStep.value = 'Person'
+  //   open(index + 1)
+  // }
+  panels.value.forEach((el,index) => {
+    if(el.component === step.component) {
+      currentStep.value = step.component
+      el.isSave = false;
+    }
+  })
 }
 
 </script>
@@ -186,8 +228,32 @@ const format = (date) => {
     margin-top: 16px;
   }
 
+  .prev-btn {
+    width: 343px;
+    height: 44px;
+    background: #FFFFFF;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 16px;
+  }
+
   .time-picker-wrapper {
     margin-top: 16px;
+
+    .date {
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      :deep .dp__input {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      :deep .dp__input_icons {
+        //display: none;
+      }
+    }
   }
 }
 :deep .v-expansion-panel__shadow {
@@ -196,6 +262,11 @@ const format = (date) => {
 
 .v-expansion-panel-text:deep .v-expansion-panel-text__wrapper {
   padding: 0;
+}
+
+.dp-custom-cell {
+  border-radius: 50%;
+  background: $primary;
 }
 
 </style>

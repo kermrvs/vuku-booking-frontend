@@ -77,6 +77,7 @@ definePageMeta({
 
   .service {
     width: 100%;
+    align-items: center;
 
     .service-name {
       font-weight: 400;

@@ -12,7 +12,6 @@
       <v-text-field
         placeholder="+ 47"
         variant="outlined"
-        rounded="123"
         class="my-input"
       >
       </v-text-field>

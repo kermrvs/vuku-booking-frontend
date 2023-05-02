@@ -27,11 +27,6 @@
 <script setup>
 
 const props = defineProps(['services']);
-
-function checkService() {
-  console.log(props.services)
-}
-
 </script>
 
 <style lang="scss" scoped>
@@ -52,6 +47,9 @@ function checkService() {
     font-style: normal;
 
     :deep .v-selection-control {
+      .v-label {
+        opacity: 1;
+      }
       .body {
         min-width: 283px;
       }

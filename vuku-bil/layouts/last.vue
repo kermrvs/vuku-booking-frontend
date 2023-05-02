@@ -31,6 +31,8 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-bottom: 28px;
+    margin-top: 50px;
   }
 }
 </style>
