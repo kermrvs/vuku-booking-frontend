@@ -9,20 +9,20 @@
     <h5 class="mt-7 basket-title">Tjenester</h5>
     <div class="d-flex justify-space-between service">
       <div class="service-name">EU-kontroll opp til 3500kg</div>
-      <div>1490,-</div>
+      <div class="price">1490,-</div>
     </div>
     <div class="d-flex justify-space-between service">
       <div class="service-name">EU-kontroll opp til 3500kg</div>
-      <div>1490,-</div>
+      <div class="price">1490,-</div>
     </div>
     <div class="d-flex justify-space-between service">
       <div class="total">Total</div>
-      <div>1490,-</div>
+      <div class="total-price">1490,-</div>
     </div>
     <h5 class="basket-title mt-2">Tidspunkt</h5>
-    <div class="d-flex service justify-space-between">
-      <div>Valgt dato</div>
-      <div>22 april 2023</div>
+    <div class="d-flex service justify-space-between service">
+      <div class="service-name">Valgt dato</div>
+      <div class="price">22 april 2023</div>
     </div>
     <div class="info-block">
       <h5 class="basket-title">Personinformasjon</h5>
@@ -93,6 +93,18 @@ definePageMeta({
       font-size: 14px;
       color: $text;
       margin-top: 14px;
+    }
+
+    .total-price {
+      font-weight: 600;
+      font-size: 16px;
+      color: #000000;
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 14px;
+      color: #000000;
     }
   }
 
