@@ -73,6 +73,7 @@ definePageMeta({
     background: #D0D0D0;
     width: 100%;
     height: 1px;
+    margin-bottom: 216px;
   }
 
   .service {

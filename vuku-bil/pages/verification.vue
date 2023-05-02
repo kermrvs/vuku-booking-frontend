@@ -11,13 +11,12 @@
       <span>+47 111 111 11 11</span></p>
     <div class="input-wrapper">
       <label class="telephone-label">Verifiseringskode på sms</label>
-      <v-text-field
+      <va-input
         placeholder="Skriv inn en kode"
-        variant="outlined"
-        rounded="123"
+        outlined
         class="my-input"
       >
-      </v-text-field>
+      </va-input>
     </div>
     <div class="d-flex justify-center">
       <v-btn class="phone-btn" @click="toVerification">Bekrefte</v-btn>
@@ -82,6 +81,27 @@ function toVerification()  {
 
     .my-input {
       margin-top: 8px;
+      width: 100%;
+      //color: #8C8C8C;
+      background: #FFFFFF !important;
+      :deep .va-input-wrapper__container {
+        height: 52px;
+        border: 1px solid #D0D0D0;
+        border-radius: 8px;
+      }
+      :deep .va-input-wrapper__field {
+        height: 100%;
+
+        &:after {
+          background: none;
+        }
+      }
+      :deep .va-input-wrapper__text {
+        font-family: 'Poppins', sans-serif !important;
+        font-style: normal !important;
+        font-weight: 400 !important;
+        font-size: 16px !important;
+      }
     }
   }
 

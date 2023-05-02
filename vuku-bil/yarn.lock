@@ -729,6 +729,11 @@
   resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.1.tgz"
   integrity sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==
 
+"@types/lodash@^4.14.161":
+  version "4.14.194"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.194.tgz#b71eb6f7a0ff11bff59fc987134a093029258a76"
+  integrity sha512-r22s9tAS7imvBt2lyHC9B8AGwWnXaYb1tY09oyLkXDs4vArpYJzw09nj8MLx5VfciBPGIb+ZwG0ssYnEPJxn/g==
+
 "@types/node@^18":
   version "18.16.3"
   resolved "https://registry.npmjs.org/@types/node/-/node-18.16.3.tgz"
@@ -933,6 +938,17 @@
   dependencies:
     date-fns "^2.29.3"
     date-fns-tz "^1.3.7"
+
+"@vuestic/nuxt@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@vuestic/nuxt/-/nuxt-1.0.13.tgz#8c7fb13ef24e6aa9f580a977ba56779fa521304e"
+  integrity sha512-hC3ZeIooYh0gFQONbceCinhyayuHh2LAGLvHt9Vjsu8TsOHcYgNBwAm0o1VRecUkitEKr4nIgGk5nMcwViGBhQ==
+  dependencies:
+    "@nuxt/kit" "^3.0.0"
+    chokidar "*"
+    nuxt "^3.0.0"
+    pathe "^0.3.5"
+    vuestic-ui "^1.4.10"
 
 abbrev@1:
   version "1.1.1"
@@ -1253,7 +1269,7 @@ chardet@^0.7.0:
   resolved "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-"chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.1, chokidar@^3.5.3:
+chokidar@*, "chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.1, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -1282,6 +1298,11 @@ clear@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/clear/-/clear-0.1.0.tgz"
   integrity sha512-qMjRnoL+JDPJHeLePZJuao6+8orzHMGP04A8CdwCNsKhRbOnKRjefxONR7bwILT3MHecxKBjHkKL/tkZ8r4Uzw==
+
+cleave.js@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/cleave.js/-/cleave.js-1.6.0.tgz#0e4e011943bdd70c67c9dcf4ff800ce710529171"
+  integrity sha512-ivqesy3j5hQVG3gywPfwKPbi/7ZSftY/UNp5uphnqjr25yI2CP8FS2ODQPzuLXXnNLi29e2+PgPkkiKUXLs/Nw==
 
 cli-cursor@^4.0.0:
   version "4.0.0"
@@ -1366,6 +1387,11 @@ colorette@^2.0.19:
   version "2.0.20"
   resolved "https://registry.npmjs.org/colorette/-/colorette-2.0.20.tgz"
   integrity sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==
+
+colortranslator@^1.9.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/colortranslator/-/colortranslator-1.10.2.tgz#0a02b75f8c6cf50b50feb119ddccfbce1111f7f7"
+  integrity sha512-+vAnjWTdI0Vh6fT3I+dA6DAtnLfo91TzYKjewYeZ2dHdhF8Yo5OMo47inNJdJOXwjJ9lPD0LkNeQOLU/8yyfZA==
 
 commander@^2.20.0:
   version "2.20.3"
@@ -2957,7 +2983,7 @@ nuxi@3.4.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt@^3.4.3:
+nuxt@^3.0.0, nuxt@^3.4.3:
   version "3.4.3"
   resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.4.3.tgz"
   integrity sha512-rOEdhHRH33m3L7aJDO7N8C+NC2vSa2mC/0hH/ePmg2S03qkzS0bVg1pIWW9ESDV5UVPFtfhOGoDTEkLJqvE18A==
@@ -3143,6 +3169,11 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+
+pathe@^0.3.5:
+  version "0.3.9"
+  resolved "https://registry.yarnpkg.com/pathe/-/pathe-0.3.9.tgz#4baff768f37f03e3d9341502865fb93116f65191"
+  integrity sha512-6Y6s0vT112P3jD8dGfuS6r+lpa0qqNrLyHPOwvXMnyNTQaYiwgau2DP3aNDsR13xqtGj7rrPo+jFUATpU6/s+g==
 
 pathe@^1.0.0, pathe@^1.1.0:
   version "1.1.0"
@@ -4266,6 +4297,16 @@ vuejs3-datepicker@^1.0.16:
     "@babel/runtime" "^7.12.5"
     prismjs "^1.22.0"
     vue "^3.0.0"
+
+vuestic-ui@^1.4.10:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/vuestic-ui/-/vuestic-ui-1.6.4.tgz#45a76d0c8bf9d61cb1c0245764a819dd3577861d"
+  integrity sha512-3ki2gmcr9edo29XLYNCWXOV1ElsoNP1x2EAyallIARU1X9FnLYOZsxkxQqupvSqmjJLtgrv+aZYiQ5dgDlILMw==
+  dependencies:
+    "@types/lodash" "^4.14.161"
+    cleave.js "^1.6.0"
+    colortranslator "^1.9.2"
+    lodash "^4.17.21"
 
 vuetify@^3.1.16:
   version "3.1.16"

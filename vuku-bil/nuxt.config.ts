@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  css: ['vuetify/lib/styles/main.sass'],
+  css: ['vuetify/lib/styles/main.sass', '@/assets/main.scss'],
   build: {
     transpile: ['vuetify'],
   },
@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     }
   },
   modules: [
-    '@pinia/nuxt',
+    '@pinia/nuxt', '@vuestic/nuxt'
   ],
   vite: {
     css: {
