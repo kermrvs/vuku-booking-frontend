@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main" ref="main">
     <v-container class="container">
       <slot/>
     </v-container>
@@ -16,8 +16,12 @@ export default {
 <style lang="scss" scoped>
 
 .main {
-
+  position: relative;
+  height: 100%;
+  padding-bottom: 100px;
   .my-footer {
+    position: absolute;
+    bottom: 0;
     width: 100%;
     display: flex;
     justify-content: center;

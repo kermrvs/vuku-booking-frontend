@@ -5,44 +5,38 @@
       :class="{'is-active': item.select}"
       v-for="(item,index) in listOfTime"
       :key="index"
-      @click="selectTime(index)"
+      @click="selectTime(item,index)"
     >
-      {{item.hours}}:{{item.minutes}}{{item.type}}
+       {{item.time}}
     </div>
   </div>
 </template>
 
 <script setup>
+import times from '@/entities/times';
 
-const listOfTime = ref([])
+const listOfTime = ref(times)
 
-formatAMPM()
-function formatAMPM() {
-  for(let i=0; i<24;i++) {
-    let hours = i;
-    var ampm = hours >= 12 ? 'pm' : 'am';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    listOfTime.value.push({hours: hours, minutes: '00', type: ampm, select: false, sortIndex: i})
-    listOfTime.value.push({hours: hours, minutes: 30, type: ampm, select: false, sortIndex: i})
+function checkOnTime(item) {
+  const times = item.time.split(':')
+  const date = new Date();
+  if(times[0] <= date.getHours()) {
+    return 1
   }
-
-  listOfTime.value.sort(function(a, b) {
-    if (a.sortIndex > b.sortIndex) {
-      return 1;
-    }
-    if (a.sortIndex < b.sortIndex) {
-      return -1;
-    }
-    return 0;
-  });
+  return 0;
 }
 
-function selectTime(index) {
-  listOfTime.value.forEach(el => {
-    el.select = false;
-  })
-  listOfTime.value[index].select = true;
+function selectTime(item,index) {
+  // if(!checkOnTime(listOfTime.value[index])) {
+  //   listOfTime.value.forEach(el => {
+  //     el.select = false;
+  //   })
+  //   listOfTime.value[index].select = true;
+  // }
+    listOfTime.value.forEach(el => {
+      el.select = false;
+    })
+    listOfTime.value[index].select = true;
 }
 
 </script>
@@ -60,7 +54,7 @@ function selectTime(index) {
   .time-item {
     width: 106px;
     height: 44px;
-    background: #F4F4F4;
+    background: #FFFFFF;
     border: 1px solid #D0D0D0;
     border-radius: 8px;
     display: flex;
@@ -73,6 +67,15 @@ function selectTime(index) {
       border: 1px solid $primary;
       border-radius: 8px;
     }
+  }
+}
+
+.is-disabled {
+  background: #F4F4F4 !important;
+  cursor: default !important;
+
+  &:hover {
+    border: 1px solid #D0D0D0 !important;
   }
 }
 

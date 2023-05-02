@@ -22,17 +22,26 @@
             <service :services="services" v-show="currentStep === item.component"/>
           </div>
           <div v-else-if="item.component === 'Time'" class="time-picker-wrapper">
-            <date-picker
-              v-model="date"
-              :min-date="new Date()"
-              :enable-time-picker="false"
-              format="dd MMM yyyy"
-              class="date"
-              teleport-center
-              calendar-cell-class-name="dp-custom-cell"
-              v-show="currentStep === item.component"
-            >
-            </date-picker>
+            <div>
+              <div class="black-sheet" v-if="isOpenModal">
+              </div>
+              <date-picker
+                v-model="date"
+                :min-date="new Date()"
+                :enable-time-picker="false"
+                format="dd MMM yyyy"
+                auto-apply
+                week-start="0"
+                class="date"
+                teleport-center
+                :clearable="false"
+                calendar-cell-class-name="dp-custom-cell"
+                v-show="currentStep === item.component"
+                @open="openModal"
+                @closed="closeModal"
+              >
+              </date-picker>
+            </div>
             <time-picker  v-show="currentStep === item.component"></time-picker>
           </div>
           <div v-else-if="item.component === 'Person'">
@@ -50,7 +59,7 @@
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
-    <v-divider class="mt-4"></v-divider>
+    <v-divider class="mt-4 divider"></v-divider>
   </div>
 </template>
 
@@ -106,6 +115,7 @@ const services = ref([
   },
 ])
 const router = useRouter()
+let isOpenModal = ref(false)
 
 function toVerification() {
   router.push('/success')
@@ -113,6 +123,12 @@ function toVerification() {
 
 function nextStep(step, index) {
   if(step === 'Service') {
+    const timeStep = panels.value.find(el => el.component)
+    if(timeStep.isSave){
+      open('Person')
+    } else {
+      open('Time')
+    }
     currentStep.value = 'Time'
     open('Time')
   } else if(step === 'Time') {
@@ -126,18 +142,14 @@ function open(index) {
 }
 
 function close(index) {
-  panel.value.push(index)
+  panel.value.splice(index,1)
 }
 
 function openOnEdit(step) {
-  // if(step === 'Service') {
-  //   currentStep.value = 'Time'
-  //   open(index + 1)
-  // } else if(step === 'Time') {
-  //   currentStep.value = 'Person'
-  //   open(index + 1)
-  // }
   panels.value.forEach((el,index) => {
+    if(!el.isSave) {
+      close(panel.value.indexOf(el.component))
+    }
     if(el.component === step.component) {
       currentStep.value = step.component
       el.isSave = false;
@@ -145,6 +157,13 @@ function openOnEdit(step) {
   })
 }
 
+function openModal() {
+  isOpenModal.value = true
+}
+
+function closeModal() {
+  isOpenModal.value = false
+}
 </script>
 
 <style lang="scss" scoped>
@@ -242,6 +261,7 @@ function openOnEdit(step) {
     margin-top: 16px;
 
     .date {
+      position: relative;
       font-family: 'Poppins', sans-serif;
       font-style: normal;
       font-weight: 400;
@@ -250,8 +270,26 @@ function openOnEdit(step) {
         font-family: 'Poppins', sans-serif;
       }
 
+      :deep .dp__menu_index {
+        z-index: 200 !important;
+        border-radius: 13px !important;
+      }
+
       :deep .dp__input_icons {
         //display: none;
+      }
+
+      :deep .dp__input_icon {
+        right: 0;
+        left: initial;
+        //left: 100%;
+      }
+
+      :deep .dp__input_icon_pad {
+        padding: 14px 0 14px 12px;
+        border: 1px solid #D0D0D0;
+        border-radius: 8px;
+        background: #FFFFFF;
       }
     }
   }
@@ -264,9 +302,42 @@ function openOnEdit(step) {
   padding: 0;
 }
 
+:deep .v-expansion-panel-title__icon {
+  display: none;
+}
+
 .dp-custom-cell {
-  border-radius: 50%;
-  background: $primary;
+  border-radius: 50% !important;
+  background: $primary !important;
+}
+
+:deep .dp__active_date {
+  background: $primary !important;
+}
+
+:deep .dp__cell_inner {
+  border-radius: 50% !important;
+}
+:deep .dp__today {
+  border: 1px solid $primary;
+}
+
+:deep .black-shift {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.35);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+:deep .dp__inner_nav {
+  svg {
+    fill: #007AFF!important;
+    width: 23px;
+    height: 30px;
+  }
 }
 
 </style>
