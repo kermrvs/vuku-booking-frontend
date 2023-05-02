@@ -5,7 +5,7 @@
     </div>
     <h5 class="mt-6">Takk for din bestilling!</h5>
     <p class="mt-2 text-center">Du vil få en bekreftelse på SMS så snart vår verksteds-mester har fått sett på din booking. Du bil også få tilsendt en påminnelse dagen før din time.</p>
-    <div class="divider mt-3"></div>
+    <div class="divider"></div>
     <h5 class="mt-7 basket-title">Tjenester</h5>
     <div class="d-flex justify-space-between service">
       <div class="service-name">EU-kontroll opp til 3500kg</div>
@@ -73,7 +73,8 @@ definePageMeta({
     background: #D0D0D0;
     width: 100%;
     height: 1px;
-    margin-bottom: 216px;
+    margin-top: 12px;
+    margin-bottom: 28px;
   }
 
   .service {
@@ -97,6 +98,7 @@ definePageMeta({
 
   .basket-title {
     width: 100%;
+    margin-top: 0 !important;
   }
 
   .info-block {

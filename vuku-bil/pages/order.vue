@@ -20,6 +20,10 @@
         <v-expansion-panel-text>
           <div v-if="item.component === 'Service'">
             <service :services="services" v-show="currentStep === item.component"/>
+            <div class="d-flex justify-space-between mt-4" v-if="currentStep !== 'Service'">
+              <div class="total-title">2 tjenester for beløpet</div>
+              <div class="total-price">1490,-</div>
+            </div>
           </div>
           <div v-else-if="item.component === 'Time'" class="time-picker-wrapper">
             <div>
@@ -41,6 +45,10 @@
                 @closed="closeModal"
               >
               </date-picker>
+              <div class="d-flex justify-space-between mt-4" v-if="currentStep !== 'Time'">
+                <div class="total-title">Valgt dato</div>
+                <div class="total-price">{{currentData}}</div>
+              </div>
             </div>
             <time-picker  v-show="currentStep === item.component"></time-picker>
           </div>
@@ -64,6 +72,7 @@
 </template>
 
 <script setup>
+import format from 'date-fns/format'
 
 definePageMeta({
   layout: 'order'
@@ -116,6 +125,9 @@ const services = ref([
 ])
 const router = useRouter()
 let isOpenModal = ref(false)
+const currentData = computed(() => {
+  return format(date.value,'dd MMM yyyy')
+})
 
 function toVerification() {
   router.push('/success')
@@ -338,6 +350,23 @@ function closeModal() {
     width: 23px;
     height: 30px;
   }
+}
+
+.total-title {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  align-items: center;
+  color: #8C8C8C;
+}
+
+.total-price {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
 }
 
 </style>

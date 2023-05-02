@@ -22,14 +22,12 @@
     </div>
     <div>
       <h5>Melding til verkstedet</h5>
-      <v-textarea
+      <va-input
         type="textarea"
         placeholder="Text"
-        class="text-fieled"
-        variant="outlined"
-        auto-grow
+        class="text-area"
         autosize
-      ></v-textarea>
+      ></va-input>
     </div>
     <div class="d-flex flex-column">
       <v-checkbox v-model="checkbox" color="black" value="1" label="Bekreft vår privacy police for å bruke vår booking tjeneste"></v-checkbox>
@@ -85,7 +83,23 @@
   }
 
   .text-area {
+    width: 100%;
+    font-weight: 400;
+    font-size: 16px;
+    color: $text;
 
+    :deep .va-input-wrapper__container {
+      border: 1px solid #D0D0D0;
+      border-radius: 8px;
+    }
+
+    :deep .va-input-wrapper__field {
+      height: 100%;
+
+      &:after {
+        background: none;
+      }
+    }
   }
 }
 </style>
