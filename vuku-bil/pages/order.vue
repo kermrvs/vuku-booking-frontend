@@ -22,7 +22,13 @@
             <service :services="services"/>
           </div>
           <div v-else-if="item.component === 'Time'" class="time-picker-wrapper">
-            <date-picker>Velg ønsket dato</date-picker>
+            <date-picker
+              v-model="date"
+              :min-date="new Date()"
+              :enable-time-picker="false"
+              format="dd MMM yyyy"
+            >
+            </date-picker>
           </div>
           <div v-else>
             <person-info></person-info>
@@ -42,6 +48,7 @@
 definePageMeta({
   layout: 'order'
 })
+const date = ref();
 const panels = ref([
   {
     title: 'Tjenester',
@@ -60,28 +67,40 @@ const services = ref([
   {
     title: 'EU-kontroll opp til 3500kg. Titlen kan ta opp til 2 linjer.',
     text: 'Her kan du enkelt bestille PKK til din personbil opp til 3500kg. Beskrivelsen kan bruke opp til 3 linjer.',
-    price: '1490,-'
+    price: '1490,-',
+    checked: false,
   },
   {
     title: 'EU-kontroll opp til 3500kg. Titlen kan ta opp til 2 linjer.',
     text: 'Her kan du enkelt bestille PKK til din personbil opp til 3500kg. Beskrivelsen kan bruke opp til 3 linjer.',
-    price: '1490,-'
+    price: '1490,-',
+    checked: false,
   },
   {
     title: 'EU-kontroll opp til 3500kg. Titlen kan ta opp til 2 linjer.',
     text: 'Her kan du enkelt bestille PKK til din personbil opp til 3500kg. Beskrivelsen kan bruke opp til 3 linjer.',
-    price: '1490,-'
+    price: '1490,-',
+    checked: false,
   },
   {
     title: 'EU-kontroll opp til 3500kg. Titlen kan ta opp til 2 linjer.',
     text: 'Her kan du enkelt bestille PKK til din personbil opp til 3500kg. Beskrivelsen kan bruke opp til 3 linjer.',
-    price: '1490,-'
+    price: '1490,-',
+    checked: false,
   },
 ])
 const router = useRouter()
 
 function toVerification()  {
   router.push('/success')
+}
+
+const format = (date) => {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  return `Selected date is ${day}/${month}/${year}`;
 }
 
 </script>
