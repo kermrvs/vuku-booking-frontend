@@ -17,7 +17,7 @@
       </va-input>
     </div>
     <div class="d-flex justify-center">
-      <v-btn class="phone-btn" variant="flat" @click="toVerification">Fortsette</v-btn>
+      <v-btn class="phone-btn" variant="flat" @click="next('/verification')">Fortsette</v-btn>
     </div>
   </div>
 </template>
@@ -28,12 +28,7 @@ import useBack from '~/composables/useBack';
 definePageMeta({
   layout: 'auth'
 })
-const router = useRouter()
-const {back} = useBack()
-
-function toVerification()  {
-  router.push('/verification')
-}
+const {back, next} = useBack()
 
 </script>
 

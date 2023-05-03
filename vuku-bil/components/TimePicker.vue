@@ -61,6 +61,11 @@ function selectTime(item,index) {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
 
     &:hover {
       background: rgba(255, 204, 0, 0.1);

@@ -4,5 +4,9 @@ export default function () {
     router.go(-1)
   }
 
-  return {back};
+  function next(url) {
+    router.push(url)
+  }
+
+  return {back, next};
 }

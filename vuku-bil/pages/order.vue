@@ -59,7 +59,7 @@
           </div>
           <div class="d-flex justify-center">
             <v-btn class="next-btn" variant="flat" v-if="(item.component === 'Service' || item.component === 'Time') && !item.isSave" @click="nextStep(item.component,index), item.isSave = true">Fortsette</v-btn>
-            <v-btn class="next-btn" variant="flat" v-else-if="item.component === 'Person'" @click="toVerification">Booking</v-btn>
+            <v-btn class="next-btn" variant="flat" v-else-if="item.component === 'Person'" @click="next('/success')">Booking</v-btn>
           </div>
           <div v-if="item.isSave" class="d-flex justify-center flex-column">
             <v-btn class="prev-btn" variant="outlined" @click="openOnEdit(item, index)">Endring</v-btn>
@@ -79,7 +79,7 @@ import useBack from '~/composables/useBack';
 definePageMeta({
   layout: 'order'
 })
-const { back } = useBack()
+const { back, next } = useBack()
 const date = ref()
 const panel = ref(['Service'])
 let currentStep = ref('Service')
