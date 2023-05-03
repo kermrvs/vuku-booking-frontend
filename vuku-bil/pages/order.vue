@@ -6,9 +6,9 @@
         <v-img src="/close.svg" class="close-btn"/>
       </div>
     </div>
-    <p>Velg tjenestene du trenger og fyll inn nødvendige data</p>
+    <p class="sub-header-text">Velg tjenestene du trenger og fyll inn nødvendige data</p>
     <v-expansion-panels class="my-list" v-model="panel" multiple>
-      <v-expansion-panel v-for="(item,index) in panels" :key="index"  :disabled="item.component !== currentStep" @click="open" :value="item.component">
+      <v-expansion-panel class="mt-0" v-for="(item,index) in panels" :key="index"  :disabled="item.component !== currentStep" @click="open" :value="item.component">
         <v-expansion-panel-title>
           <div class="d-flex title">
             <div class="circle">
@@ -58,16 +58,17 @@
             ></person-info>
           </div>
           <div class="d-flex justify-center">
-            <v-btn class="next-btn" v-if="(item.component === 'Service' || item.component === 'Time') && !item.isSave" @click="nextStep(item.component,index), item.isSave = true">Fortsette</v-btn>
-            <v-btn class="next-btn" v-else-if="item.component === 'Person'" @click="toVerification">Booking</v-btn>
+            <v-btn class="next-btn" variant="flat" v-if="(item.component === 'Service' || item.component === 'Time') && !item.isSave" @click="nextStep(item.component,index), item.isSave = true">Fortsette</v-btn>
+            <v-btn class="next-btn" variant="flat" v-else-if="item.component === 'Person'" @click="toVerification">Booking</v-btn>
           </div>
-          <div v-if="item.isSave" class="d-flex justify-center">
-            <v-btn class="prev-btn" @click="openOnEdit(item, index)">Endring</v-btn>
+          <div v-if="item.isSave" class="d-flex justify-center flex-column">
+            <v-btn class="prev-btn" variant="outlined" @click="openOnEdit(item, index)">Endring</v-btn>
+            <v-divider class="mt-4"></v-divider>
           </div>
         </v-expansion-panel-text>
       </v-expansion-panel>
     </v-expansion-panels>
-    <v-divider class="mt-4 divider"></v-divider>
+    <v-divider class="mt-0 divider" :class="{'mt-4': (currentStep === 'Person' && line)}"></v-divider>
   </div>
 </template>
 
@@ -129,6 +130,10 @@ const currentData = computed(() => {
   return format(date.value,'dd MMM yyyy')
 })
 
+const line = computed(() => {
+  return panel.value.some(el => el === 'Person');
+})
+
 function toVerification() {
   router.push('/success')
 }
@@ -183,6 +188,16 @@ function closeModal() {
 .phone-wrapper {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
+
+  :deep .v-expansion-panel-title__overlay {
+    opacity: 0;
+  }
+
+  .sub-header-text {
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+  }
 
   .header-wrapper {
     display: flex;

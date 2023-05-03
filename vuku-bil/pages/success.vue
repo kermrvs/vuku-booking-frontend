@@ -4,7 +4,7 @@
       <v-img src="/main-1.jpg" class="main-img"></v-img>
     </div>
     <h5 class="mt-6">Takk for din bestilling!</h5>
-    <p class="mt-2 text-center">Du vil få en bekreftelse på SMS så snart vår verksteds-mester har fått sett på din booking. Du bil også få tilsendt en påminnelse dagen før din time.</p>
+    <p class="mt-2 text-center main-text">Du vil få en bekreftelse på SMS så snart vår verksteds-mester har fått sett på din booking. Du bil også få tilsendt en påminnelse dagen før din time.</p>
     <div class="divider"></div>
     <h5 class="mt-7 basket-title">Tjenester</h5>
     <div class="d-flex justify-space-between service">
@@ -26,11 +26,11 @@
     </div>
     <div class="info-block">
       <h5 class="basket-title">Personinformasjon</h5>
-      <div>Cameron Williamson</div>
-      <div>+47 111 111 111 11</div>
-      <div>qwertyu@gmail.com</div>
-      <div>Regnummer / chasisnr</div>
-      <div>KM-stand</div>
+      <div class="main-text">Cameron Williamson</div>
+      <div class="main-text">+47 111 111 111 11</div>
+      <div class="main-text">qwertyu@gmail.com</div>
+      <div class="main-text">Regnummer / chasisnr</div>
+      <div class="main-text">KM-stand</div>
     </div>
 
   </div>
@@ -56,6 +56,12 @@ definePageMeta({
   .main-img {
     width: 148px;
     height: 104px;
+  }
+
+  .main-text {
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
   }
 
   h5 {

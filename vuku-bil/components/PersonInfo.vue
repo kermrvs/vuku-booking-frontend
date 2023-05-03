@@ -30,8 +30,8 @@
       ></va-input>
     </div>
     <div class="d-flex flex-column">
-      <v-checkbox v-model="checkbox" color="black" value="1" label="Bekreft vår privacy police for å bruke vår booking tjeneste"></v-checkbox>
-      <v-checkbox v-model="checkbox" color="black" value="2" label="Bekreft om du ønsker viktig info og reklame fra oss"></v-checkbox>
+      <v-checkbox v-model="checkbox" color="black" value="1" label="Bekreft vår privacy police for å bruke vår booking tjeneste" class="my-style-checkbox"></v-checkbox>
+      <v-checkbox v-model="checkbox" color="black" value="2" label="Bekreft om du ønsker viktig info og reklame fra oss" class="my-style-checkbox"></v-checkbox>
     </div>
   </div>
 </template>
@@ -48,6 +48,12 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  .my-style-checkbox {
+    :deep .v-label {
+      opacity: 1;
+    }
+  }
 
   h5 {
     margin-bottom: 8px;

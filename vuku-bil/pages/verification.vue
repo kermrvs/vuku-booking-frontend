@@ -19,7 +19,7 @@
       </va-input>
     </div>
     <div class="d-flex justify-center">
-      <v-btn class="phone-btn" @click="toVerification">Bekrefte</v-btn>
+      <v-btn class="phone-btn" variant="flat" @click="toVerification">Bekrefte</v-btn>
     </div>
     <div class="code-wrapper-helper">
       <div class="send-code">Send Kode Igjen</div>
