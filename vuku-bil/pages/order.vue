@@ -21,7 +21,7 @@
           <div v-if="item.component === 'Service'">
             <service :services="services" v-show="currentStep === item.component"/>
             <div class="d-flex justify-space-between mt-4" v-if="currentStep !== 'Service'">
-              <div class="total-title">2 tjenester for beløpet</div>
+              <div class="total-title">{{lengthOfChecked}} tjenester for beløpet</div>
               <div class="total-price">1490,-</div>
             </div>
           </div>
@@ -124,6 +124,7 @@ const services = ref([
     checked: false,
   },
 ])
+const lengthOfChecked = ref(0)
 const router = useRouter()
 let isOpenModal = ref(false)
 const currentData = computed(() => {
@@ -143,14 +144,16 @@ function back() {
 
 function nextStep(step, index) {
   if(step === 'Service') {
-    const timeStep = panels.value.find(el => el.component)
+    const timeStep = panels.value.find(el => el.component === 'Time')
+    lengthOfChecked.value = services.value.filter(el => el.checked).length
+
     if(timeStep.isSave){
+      currentStep.value = 'Person'
       open('Person')
     } else {
+      currentStep.value = 'Time'
       open('Time')
     }
-    currentStep.value = 'Time'
-    open('Time')
   } else if(step === 'Time') {
     currentStep.value = 'Person'
     open('Person')
