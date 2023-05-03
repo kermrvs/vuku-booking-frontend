@@ -2,7 +2,7 @@
   <div class="time-wrapper">
     <div
       class="time-item"
-      :class="{'is-active': item.select}"
+      :class="{'is-active': item.select, 'is-disabled': checkOnTime(item)}"
       v-for="(item,index) in listOfTime"
       :key="index"
       @click="selectTime(item,index)"
@@ -15,28 +15,34 @@
 <script setup>
 import times from '@/entities/times';
 
+const props = defineProps(['selectedTime','modelValue'])
+const emits = defineEmits(['update:modelValue'])
 const listOfTime = ref(times)
 
 function checkOnTime(item) {
   const times = item.time.split(':')
-  const date = new Date();
-  if(times[0] <= date.getHours()) {
+  console.log(props)
+  const date = props.selectedTime;
+  const date1 = new Date();
+  date1.setHours(times[0])
+  date1.setMinutes(times[1])
+  if(date.getTime() > new Date().getTime()) {
+    return 0;
+  }
+  if(date.getTime() > date1.getTime()) {
     return 1
   }
   return 0;
 }
 
 function selectTime(item,index) {
-  // if(!checkOnTime(listOfTime.value[index])) {
-  //   listOfTime.value.forEach(el => {
-  //     el.select = false;
-  //   })
-  //   listOfTime.value[index].select = true;
-  // }
+  if(!checkOnTime(listOfTime.value[index])) {
     listOfTime.value.forEach(el => {
       el.select = false;
     })
     listOfTime.value[index].select = true;
+    emits('update:modelValue', item.time)
+  }
 }
 
 </script>

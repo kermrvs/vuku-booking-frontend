@@ -50,7 +50,11 @@
                 <div class="total-price">{{currentData}}</div>
               </div>
             </div>
-            <time-picker  v-show="currentStep === item.component"></time-picker>
+            <time-picker
+              v-show="currentStep === item.component"
+              :selectedTime="date"
+              v-model="selectedTime"
+            ></time-picker>
           </div>
           <div v-else-if="item.component === 'Person'">
             <person-info
@@ -75,12 +79,13 @@
 <script setup>
 import format from 'date-fns/format'
 import useBack from '~/composables/useBack';
+import {useDateStore} from '~/store';
 
 definePageMeta({
   layout: 'order'
 })
 const { back, next } = useBack()
-const date = ref()
+const date = ref(new Date)
 const panel = ref(['Service'])
 let currentStep = ref('Service')
 const panels = ref([
@@ -132,13 +137,11 @@ let isOpenModal = ref(false)
 const currentData = computed(() => {
   return format(date.value,'dd MMM yyyy')
 })
+const selectedTime = ref('')
 
 const line = computed(() => {
   return panel.value.some(el => el === 'Person');
 })
-function toVerification() {
-  router.push('/success')
-}
 function nextStep(step, index) {
   if(step === 'Service') {
     const timeStep = panels.value.find(el => el.component === 'Time')
