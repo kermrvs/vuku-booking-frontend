@@ -29,6 +29,8 @@
 </template>
 
 <script setup>
+import useBack from '~/composables/useBack';
+
 definePageMeta({
   layout: 'auth'
 })
@@ -38,9 +40,7 @@ function toVerification()  {
   router.push('/order')
 }
 
-function back() {
-  router.go(-1)
-}
+const {back} = useBack()
 
 </script>
 

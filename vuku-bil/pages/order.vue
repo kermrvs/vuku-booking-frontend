@@ -2,7 +2,7 @@
   <div class="phone-wrapper">
     <div class="header-wrapper">
       <div>Tjenestebestilling</div>
-      <div @click="back">
+      <div @click="back()">
         <v-img src="/close.svg" class="close-btn"/>
       </div>
     </div>
@@ -74,10 +74,12 @@
 
 <script setup>
 import format from 'date-fns/format'
+import useBack from '~/composables/useBack';
 
 definePageMeta({
   layout: 'order'
 })
+const { back } = useBack()
 const date = ref()
 const panel = ref(['Service'])
 let currentStep = ref('Service')
@@ -137,11 +139,6 @@ const line = computed(() => {
 function toVerification() {
   router.push('/success')
 }
-
-function back() {
-  router.go(-1)
-}
-
 function nextStep(step, index) {
   if(step === 'Service') {
     const timeStep = panels.value.find(el => el.component === 'Time')

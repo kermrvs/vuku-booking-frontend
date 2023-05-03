@@ -8,7 +8,7 @@
       @click="checkService">
       <v-checkbox-btn
         v-model="item.checked"
-        class="flex-row-reverse"
+        class="flex-row-reverse my-icon-color"
         color="#FFCC00"
         :true-icon="'mdi-checkbox-marked-circle'"
         :false-icon="'mdi-circle-outline'">
@@ -45,6 +45,12 @@ const props = defineProps(['services']);
     padding: 12px 12px 12px 12px;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
+
+    .my-icon-color {
+      :deep .mdi-circle-outline::before {
+        color: $primary
+      }
+    }
 
     :deep .v-selection-control {
       .v-label {

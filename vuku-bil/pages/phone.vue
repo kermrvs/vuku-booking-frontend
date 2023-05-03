@@ -23,16 +23,16 @@
 </template>
 
 <script setup>
+import useBack from '~/composables/useBack';
+
 definePageMeta({
   layout: 'auth'
 })
 const router = useRouter()
+const {back} = useBack()
 
 function toVerification()  {
   router.push('/verification')
-}
-function back() {
-  router.go(-1)
 }
 
 </script>
