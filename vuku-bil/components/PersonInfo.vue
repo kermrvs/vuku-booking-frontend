@@ -70,11 +70,13 @@
 
     :deep .va-input-wrapper__container {
       height: 52px;
-      border: 1px solid #D0D0D0;
+      //border: 1px solid #D0D0D0;
       border-radius: 8px;
     }
     :deep .va-input-wrapper__field {
       height: 100%;
+      border: 1px solid #D0D0D0;
+      border-radius: 8px;
 
       &:after {
         background: none;
@@ -95,17 +97,25 @@
     color: $text;
 
     :deep .va-input-wrapper__container {
-      border: 1px solid #D0D0D0;
       border-radius: 8px;
     }
 
     :deep .va-input-wrapper__field {
       height: 100%;
+      border: 1px solid #D0D0D0;
+      border-radius: 8px;
 
       &:after {
         background: none;
       }
     }
   }
+}
+
+:deep .va-input-wrapper--focused {
+  background: #FFFFFF;
+  border: 1px solid #D0D0D0;
+  border-radius: 8px;
+  --va-input-wrapper-border-color: none;
 }
 </style>
