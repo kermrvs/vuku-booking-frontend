@@ -13,15 +13,16 @@
 </template>
 
 <script setup>
-import times from '@/entities/times';
+import {useDateStore} from '~/store';
 
 const props = defineProps(['selectedTime','modelValue'])
 const emits = defineEmits(['update:modelValue'])
-const listOfTime = ref(times)
+
+const store = useDateStore()
+const listOfTime = toRef(store, 'selectedDate')
 
 function checkOnTime(item) {
   const times = item.time.split(':')
-  console.log(props)
   const date = props.selectedTime;
   const date1 = new Date();
   date1.setHours(times[0])

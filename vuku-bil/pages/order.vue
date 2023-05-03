@@ -137,7 +137,16 @@ let isOpenModal = ref(false)
 const currentData = computed(() => {
   return format(date.value,'dd MMM yyyy')
 })
+
+const store = useDateStore()
+const listOfTime = toRef(store, 'selectedDate')
 const selectedTime = ref('')
+
+watch(date, (newVal, oldVal) => {
+  listOfTime.value.forEach(el => {
+    el.select = false
+  })
+})
 
 const line = computed(() => {
   return panel.value.some(el => el === 'Person');
