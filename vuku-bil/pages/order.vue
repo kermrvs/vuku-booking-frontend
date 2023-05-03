@@ -2,7 +2,7 @@
   <div class="phone-wrapper">
     <div class="header-wrapper">
       <div>Tjenestebestilling</div>
-      <div>
+      <div @click="back">
         <v-img src="/close.svg" class="close-btn"/>
       </div>
     </div>
@@ -79,7 +79,7 @@ definePageMeta({
   layout: 'order'
 })
 const date = ref()
-const panel = ref([])
+const panel = ref(['Service'])
 let currentStep = ref('Service')
 const panels = ref([
   {
@@ -133,9 +133,12 @@ const currentData = computed(() => {
 const line = computed(() => {
   return panel.value.some(el => el === 'Person');
 })
-
 function toVerification() {
   router.push('/success')
+}
+
+function back() {
+  router.go(-1)
 }
 
 function nextStep(step, index) {
@@ -217,7 +220,7 @@ function closeModal() {
     font-weight: 400;
     font-size: 14px;
     margin-top: 20px;
-    margin-bottom: 36px;
+    margin-bottom: 16px;
   }
 
   .input-wrapper {
@@ -304,6 +307,13 @@ function closeModal() {
 
       :deep .dp__input_icons {
         //display: none;
+      }
+
+      :deep .dp__input_wrap {
+        svg {
+          width: 22px;
+          height: 22px;
+        }
       }
 
       :deep .dp__input_icon {

@@ -2,7 +2,7 @@
   <div class="phone-wrapper">
     <div class="header-wrapper">
       <div>Autorisasjon</div>
-      <div>
+      <div @click="back">
         <v-img src="/close.svg" class="close-btn"/>
       </div>
     </div>
@@ -30,6 +30,9 @@ const router = useRouter()
 
 function toVerification()  {
   router.push('/verification')
+}
+function back() {
+  router.go(-1)
 }
 
 </script>
