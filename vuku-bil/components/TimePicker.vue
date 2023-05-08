@@ -53,6 +53,7 @@ function selectTime(item,index) {
   margin-top: 24px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
 
   .time-item {

@@ -93,6 +93,7 @@ const {back, next} = useBack()
     margin-top: 28px;
     min-width: 343px;
     height: 52px;
+    width: 100%;
     background: $primary;
     border-radius: 100px;
     font-weight: 600;

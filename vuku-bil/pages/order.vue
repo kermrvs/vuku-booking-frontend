@@ -287,7 +287,7 @@ function openModalWindow () {
   }
 
   .next-btn {
-    width: 343px;
+    width: 100%;
     height: 44px;
     background: $primary;
     border-radius: 100px;
@@ -301,7 +301,7 @@ function openModalWindow () {
   }
 
   .prev-btn {
-    width: 343px;
+    width: 100%;
     height: 44px;
     background: #FFFFFF;
     border-radius: 100px;

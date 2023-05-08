@@ -106,6 +106,7 @@ const {back, next} = useBack()
   }
 
   .phone-btn {
+    width: 100%;
     margin-top: 28px;
     min-width: 343px;
     height: 52px;

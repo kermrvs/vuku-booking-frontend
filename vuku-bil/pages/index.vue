@@ -54,6 +54,7 @@ const router = useRouter();
       font-weight: 600;
       font-size: 16px;
       min-width: 343px;
+      width: 100%;
       height: 52px;
       border-radius: 100px;
       flex: none;
