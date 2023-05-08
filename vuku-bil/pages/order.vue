@@ -79,7 +79,7 @@
 </template>
 
 <script setup>
-import format from 'date-fns/format'
+import {format} from 'date-fns'
 import useBack from '~/composables/useBack';
 import {useDateStore} from '~/store';
 

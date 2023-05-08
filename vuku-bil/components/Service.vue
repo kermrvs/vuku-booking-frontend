@@ -38,7 +38,7 @@ const props = defineProps(['services']);
   align-items: center;
 
   .service-wrapper {
-    max-width: 343px;
+    width: 100%;
     min-height: 132px;
     border: 2px solid #D0D0D0;
     border-radius: 8px;

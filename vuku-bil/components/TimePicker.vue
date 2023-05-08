@@ -52,6 +52,7 @@ function selectTime(item,index) {
 .time-wrapper {
   margin-top: 24px;
   display: flex;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
