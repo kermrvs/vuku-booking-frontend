@@ -3,10 +3,10 @@
     <div>
       <v-img src="/main-1.jpg" class="main-img"></v-img>
     </div>
-    <h5 class="mt-6">Takk for din bestilling!</h5>
+    <h5 class="mt-5">Takk for din bestilling!</h5>
     <p class="mt-2 text-center main-text">Du vil få en bekreftelse på SMS så snart vår verksteds-mester har fått sett på din booking. Du bil også få tilsendt en påminnelse dagen før din time.</p>
     <div class="divider"></div>
-    <h5 class="mt-7 basket-title">Tjenester</h5>
+    <h5 class="mt-5 basket-title">Tjenester</h5>
     <div class="d-flex justify-space-between service">
       <div class="service-name">EU-kontroll opp til 3500kg</div>
       <div class="price">1490,-</div>
@@ -19,18 +19,22 @@
       <div class="total">Total</div>
       <div class="total-price">1490,-</div>
     </div>
-    <h5 class="basket-title mt-2">Tidspunkt</h5>
+    <h5 class="basket-title mt-4">Tidspunkt</h5>
     <div class="d-flex service justify-space-between service">
       <div class="service-name">Valgt dato</div>
-      <div class="price">22 april 2023</div>
+      <div class="price">22 Apr 2023 17:45</div>
     </div>
     <div class="info-block">
-      <h5 class="basket-title">Personinformasjon</h5>
+      <h5 class="basket-title mb-3">Personinformasjon</h5>
       <div class="main-text">Cameron Williamson</div>
       <div class="main-text">+47 111 111 111 11</div>
       <div class="main-text">qwertyu@gmail.com</div>
       <div class="main-text">Regnummer / chasisnr</div>
       <div class="main-text">KM-stand</div>
+    </div>
+
+    <div class="d-flex justify-center mt-16">
+      <v-btn width="187" height="79" rounded="0" variant="tonal" class="tilbake-btn">TILBAKE TIL START</v-btn>
     </div>
 
   </div>
@@ -80,7 +84,6 @@ definePageMeta({
     width: 100%;
     height: 1px;
     margin-top: 12px;
-    margin-bottom: 28px;
   }
 
   .service {
@@ -116,7 +119,6 @@ definePageMeta({
 
   .basket-title {
     width: 100%;
-    margin-top: 0 !important;
   }
 
   .info-block {
@@ -126,6 +128,20 @@ definePageMeta({
     flex-direction: column;
     //justify-content: center;
     align-items: flex-start;
+  }
+
+  .tilbake-btn {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+
   }
 }
 
