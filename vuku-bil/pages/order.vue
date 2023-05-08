@@ -378,6 +378,7 @@ function openModalWindow () {
 .dp-custom-cell {
   border-radius: 50% !important;
   background: $primary !important;
+  font-size: 18px;
 }
 
 :deep .dp__active_date {
@@ -385,6 +386,7 @@ function openModalWindow () {
 }
 
 :deep .dp__cell_inner {
+  font-size: 18px;
   border-radius: 50% !important;
 }
 :deep .dp__today {
@@ -401,11 +403,27 @@ function openModalWindow () {
   z-index: 100;
 }
 
+:deep .dp__calendar_header_item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  //align-items: center;
+}
+
+:deep .dp__calendar_item {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 :deep .dp__inner_nav {
   svg {
     fill: #007AFF!important;
-    width: 23px;
-    height: 30px;
+    width: 28px;
+    height: 35px;
   }
 }
 

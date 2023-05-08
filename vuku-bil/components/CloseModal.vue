@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="props.modelValue" @click="$emit('update:modelValue', false)">
+  <v-dialog max-width="300" v-model="props.modelValue" @click="$emit('update:modelValue', false)">
     <v-card width="300">
       <v-container class="d-flex justify-center text-center flex-column body-form">
         <p>Closing this form will redirect you to the main page without saving the entered data. Do you really want to close this page?

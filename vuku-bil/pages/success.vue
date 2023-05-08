@@ -3,9 +3,9 @@
     <div>
       <v-img src="/main-1.jpg" class="main-img"></v-img>
     </div>
-    <h5 class="mt-5">Takk for din bestilling!</h5>
-    <p class="mt-2 text-center main-text">Du vil få en bekreftelse på SMS så snart vår verksteds-mester har fått sett på din booking. Du bil også få tilsendt en påminnelse dagen før din time.</p>
-    <div class="divider"></div>
+    <h5 class="mt-6">Takk for din bestilling!</h5>
+    <p class="mt-3 text-center main-text">Du vil få en bekreftelse på SMS så snart vår verksteds-mester har fått sett på din booking. Du bil også få tilsendt en påminnelse dagen før din time.</p>
+    <div class="divider mt-4"></div>
     <h5 class="mt-5 basket-title">Tjenester</h5>
     <div class="d-flex justify-space-between service">
       <div class="service-name">EU-kontroll opp til 3500kg</div>
@@ -63,18 +63,22 @@ definePageMeta({
   }
 
   .main-text {
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: #000000;
+    margin-bottom: 4px;
   }
 
   h5 {
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 16px;
     color: $text;
   }
 
   p {
+    font-family: 'Poppins', sans-serif;
     font-weight: 400;
     font-size: 14px;
   }
@@ -91,6 +95,7 @@ definePageMeta({
     align-items: center;
 
     .service-name {
+      font-family: 'Poppins', sans-serif;
       font-weight: 400;
       font-size: 14px;
       color: #8C8C8C;
@@ -98,6 +103,7 @@ definePageMeta({
     }
 
     .total {
+      font-family: 'Poppins', sans-serif;
       font-weight: 400;
       font-size: 14px;
       color: $text;
@@ -105,12 +111,14 @@ definePageMeta({
     }
 
     .total-price {
+      font-family: 'Poppins', sans-serif;
       font-weight: 600;
       font-size: 16px;
       color: #000000;
     }
 
     .price {
+      font-family: 'Poppins', sans-serif;
       font-weight: 600;
       font-size: 14px;
       color: #000000;

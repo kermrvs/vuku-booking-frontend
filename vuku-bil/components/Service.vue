@@ -65,9 +65,9 @@ const props = defineProps(['services']);
     //  transform: translateX(40px);
     //}
 
-    &:hover {
-      border: 2px solid $primary;
-    }
+    //&:hover {
+    //  border: 2px solid $primary;
+    //}
 
     h5 {
       font-weight: 600;

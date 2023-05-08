@@ -12,9 +12,11 @@
     <div class="input-wrapper">
       <label class="telephone-label">Verifiseringskode på sms</label>
       <va-input
+        v-model="verification"
         placeholder="Skriv inn en kode"
         outlined
         class="my-input"
+        :rules="[(v) => v.length > 4 || `Error`]"
       >
       </va-input>
     </div>
@@ -35,6 +37,7 @@ definePageMeta({
   layout: 'auth'
 })
 const {back, next} = useBack()
+let verification = ref('')
 
 </script>
 
@@ -87,6 +90,11 @@ const {back, next} = useBack()
         //border: 1px solid #D0D0D0;
         border-radius: 8px;
       }
+
+      :deep .va-icon {
+        display: none;
+      }
+
       :deep .va-input-wrapper__field {
         height: 100%;
         border: 1px solid #D0D0D0;
@@ -138,7 +146,7 @@ const {back, next} = useBack()
 
 :deep .va-input-wrapper--focused {
   background: #FFFFFF;
-  border: 1px solid #D0D0D0;
+  //border: 1px solid #D0D0D0;
   border-radius: 8px;
   --va-input-wrapper-border-color: none;
 }

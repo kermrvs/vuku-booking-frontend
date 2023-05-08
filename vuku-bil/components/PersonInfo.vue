@@ -1,34 +1,31 @@
 <template>
   <div class="person-info-wrapper">
-    <div>
-      <h5>Fult navn</h5>
-      <va-input v-model="listInputs.field1" placeholder="Velg ønsket dato" class="text-fieled rounded-lg" variant="outlined"></va-input>
-    </div>
-    <div>
-      <h5>Telefonnummer</h5>
-      <va-input v-model="listInputs.field2" placeholder="Velg ønsket dato"  class="text-fieled" variant="outlined"></va-input>
-    </div>
-    <div>
-      <h5>E-post</h5>
-      <va-input v-model="listInputs.field3" placeholder="Velg ønsket dato"  class="text-fieled" variant="outlined"></va-input>
-    </div>
-    <div>
-      <h5>Regnummer / chasisnr</h5>
-      <va-input v-model="listInputs.field4" placeholder="Velg ønsket dato"  class="text-fieled" variant="outlined"></va-input>
-    </div>
-    <div>
-      <h5>KM-stand</h5>
-      <va-input v-model="listInputs.field5" placeholder="Velg ønsket dato"  class="text-fieled" variant="outlined"></va-input>
+    <div
+      v-for="(item,index) in fields"
+      :key="index"
+    >
+      <h5>{{item.title}}</h5>
+      <va-input
+        v-model="item.value"
+        :placeholder="item.placeholder"
+        class="text-fieled rounded-lg"
+        variant="outlined"
+        :rules="item.rules"
+      ></va-input>
     </div>
     <div>
       <h5>Melding til verkstedet</h5>
       <va-input
         v-model="listInputs.field6"
         type="textarea"
+        :max-length="100"
         placeholder="Text"
         class="text-area"
-        autosize
-      ></va-input>
+        min-rows="6"
+        max-rows="6"
+        :rules="[(v) => v.length < 100 || `Error`]"
+      >
+      </va-input>
     </div>
     <div class="d-flex flex-column my-checkbox">
       <v-checkbox v-model="checkbox" color="black" value="1" label="Bekreft vår privacy police for å bruke vår booking tjeneste" class="my-style-checkbox"></v-checkbox>
@@ -47,6 +44,44 @@
     field5: '',
     field6: '',
   })
+
+  const fields = ref([
+    {
+      title: 'Fult navn',
+      type: 'text',
+      rules: [(v) => v.length > 4 || `Error`],
+      placeholder: 'Velg ønsket dato',
+      value: '',
+    },
+    {
+      title: 'Telefonnummer',
+      type: 'text',
+      rules: [(v) => v.length > 4 || `Error`],
+      placeholder: 'Velg ønsket dato',
+      value: '',
+    },
+    {
+      title: 'E-post',
+      type: 'text',
+      rules: [(v) => v.length > 4 || `Error`],
+      placeholder: 'Velg ønsket dato',
+      value: '',
+    },
+    {
+      title: 'Regnummer / chasisnr',
+      type: 'text',
+      rules: [(v) => v.length > 4 || `Error`],
+      placeholder: 'Velg ønsket dato',
+      value: '',
+    },
+    {
+      title: 'KM-stand',
+      type: 'text',
+      rules: [(v) => v.length > 4 || `Error`],
+      placeholder: 'Velg ønsket dato',
+      value: '',
+    },
+  ])
 </script>
 
 <style lang="scss" scoped>
@@ -108,6 +143,15 @@
         background: none;
       }
     }
+
+    :deep .va-icon {
+      display: none;
+    }
+
+    :deep .va-message-list {
+      margin-top: 8px;
+    }
+
     :deep .va-input-wrapper__text {
       font-family: 'Poppins', sans-serif !important;
       font-style: normal !important;
@@ -116,11 +160,19 @@
     }
   }
 
+  :deep .va-input textarea  {
+    resize: none;
+  }
+
   .text-area {
     width: 100%;
     font-weight: 400;
     font-size: 16px;
     color: $text;
+
+    :deep .va-icon {
+      display: none;
+    }
 
     :deep .va-input-wrapper__container {
       border-radius: 8px;
@@ -140,7 +192,7 @@
 
 :deep .va-input-wrapper--focused {
   background: #FFFFFF;
-  border: 1px solid #D0D0D0;
+  //border: 1px solid #D0D0D0;
   border-radius: 8px;
   --va-input-wrapper-border-color: none;
 }
