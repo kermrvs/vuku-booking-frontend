@@ -1,7 +1,7 @@
 export default function () {
   const router = useRouter();
   function back() {
-    router.go(-1)
+    router.push('/')
   }
 
   function next(url) {

@@ -54,9 +54,6 @@ function selectTime(item,index) {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  height: 220px;
-  overflow: hidden;
-  overflow-y: scroll;
 
   .time-item {
     width: 106px;

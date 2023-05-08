@@ -2,7 +2,7 @@
   <div class="phone-wrapper">
     <div class="header-wrapper">
       <div>Tjenestebestilling</div>
-      <div @click="back()">
+      <div @click="openModalWindow">
         <v-img src="/close.svg" class="close-btn"/>
       </div>
     </div>
@@ -41,6 +41,7 @@
                 :clearable="false"
                 calendar-cell-class-name="dp-custom-cell"
                 v-show="currentStep === item.component"
+                :offset="20"
                 @open="openModal"
                 @closed="closeModal"
               >
@@ -63,7 +64,7 @@
           </div>
           <div class="d-flex justify-center">
             <v-btn class="next-btn" variant="flat" v-if="(item.component === 'Service' || item.component === 'Time') && !item.isSave" @click="nextStep(item.component,index), item.isSave = true">Fortsette</v-btn>
-            <v-btn class="next-btn" variant="flat" v-else-if="item.component === 'Person'" @click="next('/success')">Booking</v-btn>
+            <v-btn class="next-btn booking-btn" variant="flat" v-else-if="item.component === 'Person'" @click="next('/success')">Booking</v-btn>
           </div>
           <div v-if="item.isSave" class="d-flex justify-center flex-column">
             <v-btn class="prev-btn" variant="outlined" @click="openOnEdit(item, index)">Endring</v-btn>
@@ -73,6 +74,7 @@
       </v-expansion-panel>
     </v-expansion-panels>
     <v-divider class="mt-0 divider" :class="{'mt-4': (currentStep === 'Person' && line)}"></v-divider>
+    <CloseModal v-model="isOpenCloseModal"/>
   </div>
 </template>
 
@@ -88,6 +90,7 @@ const { back, next } = useBack()
 const date = ref(new Date)
 const panel = ref(['Service'])
 let currentStep = ref('Service')
+let isOpenModal = ref(false)
 const panels = ref([
   {
     title: 'Tjenester',
@@ -133,7 +136,7 @@ const services = ref([
 ])
 const lengthOfChecked = ref(0)
 const router = useRouter()
-let isOpenModal = ref(false)
+let isOpenCloseModal = ref(false)
 const currentData = computed(() => {
   return format(date.value,'dd MMM yyyy')
 })
@@ -195,6 +198,10 @@ function openModal() {
 
 function closeModal() {
   isOpenModal.value = false
+}
+
+function openModalWindow () {
+  isOpenCloseModal.value = true;
 }
 </script>
 
@@ -289,6 +296,10 @@ function closeModal() {
     margin-top: 16px;
   }
 
+  .booking-btn {
+    margin-top: 8px;
+  }
+
   .prev-btn {
     width: 343px;
     height: 44px;
@@ -315,6 +326,15 @@ function closeModal() {
       :deep .dp__menu_index {
         z-index: 200 !important;
         border-radius: 13px !important;
+        min-width: 330px;
+        min-height: 300px;
+
+        .dp__calendar_header {
+          gap: 10px !important;
+        }
+        .dp__calendar_row {
+          gap: 10px !important;
+        }
       }
 
       :deep .dp__input_icons {

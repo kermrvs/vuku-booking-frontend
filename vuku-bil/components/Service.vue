@@ -39,10 +39,10 @@ const props = defineProps(['services']);
 
   .service-wrapper {
     max-width: 343px;
-    min-height: 156px;
-    border: 1px solid #D0D0D0;
+    min-height: 132px;
+    border: 2px solid #D0D0D0;
     border-radius: 8px;
-    padding: 12px 12px 12px 12px;
+    padding: 12px 12px 2px 12px;
     font-family: 'Poppins', sans-serif;
     font-style: normal;
 
@@ -57,7 +57,7 @@ const props = defineProps(['services']);
         opacity: 1;
       }
       .body {
-        min-width: 283px;
+        min-width: 250px;
       }
     }
 
@@ -73,6 +73,7 @@ const props = defineProps(['services']);
       font-weight: 600;
       font-size: 14px;
       color: $text;
+      word-wrap: break-word !important;
     }
 
     p {
@@ -81,6 +82,7 @@ const props = defineProps(['services']);
       font-weight: 400;
       font-size: 12px;
       color: $grey;
+      word-wrap: break-word;
     }
 
     .price {

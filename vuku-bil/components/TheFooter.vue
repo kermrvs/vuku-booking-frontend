@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-img src="/logo.png" class="logo"></v-img>
+    <v-img src="/main-2.jpg" class="logo"></v-img>
   </div>
 </template>
 
