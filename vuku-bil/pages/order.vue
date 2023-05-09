@@ -242,15 +242,13 @@ function close(index) {
 }
 
 function toSuccessPage() {
-  // console.log(fields.value)
   fields.value.forEach(el => {
     personStore.setPersonInfo({
       title: el.title,
       value: el.value
     })
   })
-  console.log(personStore.personInfo)
-  // next('/success')
+  next('/success')
 }
 
 function openOnEdit(step) {
