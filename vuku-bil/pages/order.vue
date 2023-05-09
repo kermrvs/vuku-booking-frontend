@@ -35,10 +35,12 @@
                 :enable-time-picker="false"
                 format="dd MMM yyyy"
                 auto-apply
-                week-start="0"
+                week-start="1"
+                :highlight="[1]"
                 class="date"
                 teleport-center
                 :clearable="false"
+                :disabled-week-days="[6, 0]"
                 calendar-cell-class-name="dp-custom-cell"
                 v-show="currentStep === item.component"
                 :offset="20"
@@ -60,11 +62,12 @@
           <div v-else-if="item.component === 'Person'">
             <person-info
               v-show="currentStep === item.component"
+              v-model="fields"
             ></person-info>
           </div>
           <div class="d-flex justify-center">
             <v-btn class="next-btn" variant="flat" v-if="(item.component === 'Service' || item.component === 'Time') && !item.isSave" @click="nextStep(item.component,index), item.isSave = true">Fortsette</v-btn>
-            <v-btn class="next-btn booking-btn" variant="flat" v-else-if="item.component === 'Person'" @click="next('/success')">Booking</v-btn>
+            <v-btn class="next-btn booking-btn" variant="flat" v-else-if="item.component === 'Person'" @click="toSuccessPage">Booking</v-btn>
           </div>
           <div v-if="item.isSave" class="d-flex justify-center flex-column">
             <v-btn class="prev-btn" variant="outlined" @click="openOnEdit(item, index)">Endring</v-btn>
@@ -82,6 +85,7 @@
 import {format} from 'date-fns'
 import useBack from '~/composables/useBack';
 import {useDateStore} from '~/store';
+import {usePersonStore} from '~/store/person';
 
 definePageMeta({
   layout: 'order'
@@ -137,13 +141,53 @@ const services = ref([
 const lengthOfChecked = ref(0)
 const router = useRouter()
 let isOpenCloseModal = ref(false)
+
+const store = useDateStore()
+const personStore = usePersonStore()
+const listOfTime = toRef(store, 'selectedDate')
+const selectedTime = ref('')
+
+const fields = ref([
+  {
+    title: 'Fult navn',
+    type: 'text',
+    rules: [(v) => v.length > 4 || `Error`],
+    placeholder: 'Velg ønsket dato',
+    value: '',
+  },
+  {
+    title: 'Telefonnummer',
+    type: 'text',
+    rules: [(v) => v.length > 4 || `Error`],
+    placeholder: 'Velg ønsket dato',
+    value: '+47',
+  },
+  {
+    title: 'E-post',
+    type: 'text',
+    rules: [(v) => v.length > 4 || `Error`],
+    placeholder: 'Velg ønsket dato',
+    value: '',
+  },
+  {
+    title: 'Regnummer / chasisnr',
+    type: 'text',
+    rules: [(v) => v.length > 4 || `Error`],
+    placeholder: 'Velg ønsket dato',
+    value: '',
+  },
+  {
+    title: 'KM-stand',
+    type: 'text',
+    rules: [(v) => v.length > 4 || `Error`],
+    placeholder: 'Velg ønsket dato',
+    value: '',
+  },
+])
+
 const currentData = computed(() => {
   return format(date.value,'dd MMM yyyy')
 })
-
-const store = useDateStore()
-const listOfTime = toRef(store, 'selectedDate')
-const selectedTime = ref('')
 
 watch(date, (newVal, oldVal) => {
   listOfTime.value.forEach(el => {
@@ -151,13 +195,22 @@ watch(date, (newVal, oldVal) => {
   })
 })
 
+
+
 const line = computed(() => {
   return panel.value.some(el => el === 'Person');
 })
-function nextStep(step, index) {
+function nextStep(step) {
   if(step === 'Service') {
     const timeStep = panels.value.find(el => el.component === 'Time')
     lengthOfChecked.value = services.value.filter(el => el.checked).length
+
+    services.value.forEach(el => {
+      if(el.checked) personStore.setService({
+        title: el.title,
+        price: el.price
+      })
+    })
 
     if(timeStep.isSave){
       currentStep.value = 'Person'
@@ -168,6 +221,14 @@ function nextStep(step, index) {
     }
   } else if(step === 'Time') {
     currentStep.value = 'Person'
+    const selectedTime = store.selectedDate.find(el => el.select)
+    if(selectedTime) {
+      const times = selectedTime.time.split(':')
+      date.value.setHours(times[0])
+      date.value.setMinutes(times[1])
+      date.value.setSeconds(0)
+      personStore.setTime(date.value)
+    }
     open('Person')
   }
 }
@@ -178,6 +239,18 @@ function open(index) {
 
 function close(index) {
   panel.value.splice(index,1)
+}
+
+function toSuccessPage() {
+  // console.log(fields.value)
+  fields.value.forEach(el => {
+    personStore.setPersonInfo({
+      title: el.title,
+      value: el.value
+    })
+  })
+  console.log(personStore.personInfo)
+  // next('/success')
 }
 
 function openOnEdit(step) {

@@ -1,7 +1,7 @@
 <template>
   <div class="person-info-wrapper">
     <div
-      v-for="(item,index) in fields"
+      v-for="(item,index) in props.modelValue"
       :key="index"
     >
       <h5>{{item.title}}</h5>
@@ -16,13 +16,13 @@
     <div>
       <h5>Melding til verkstedet</h5>
       <va-input
-        v-model="listInputs.field6"
+        v-model="listInputs.value"
         type="textarea"
         :max-length="100"
         placeholder="Text"
         class="text-area"
-        min-rows="6"
-        max-rows="6"
+        :min-rows="6"
+        :max-rows="6"
         :rules="[(v) => v.length < 100 || `Error`]"
       >
       </va-input>
@@ -37,51 +37,47 @@
 <script setup>
   const checkbox = ref(['1','2'])
   const listInputs = ref({
-    field1: '',
-    field2: '',
-    field3: '',
-    field4: '',
-    field5: '',
-    field6: '',
+    value: ''
   })
+  const props = defineProps(['modelValue'])
 
-  const fields = ref([
-    {
-      title: 'Fult navn',
-      type: 'text',
-      rules: [(v) => v.length > 4 || `Error`],
-      placeholder: 'Velg ønsket dato',
-      value: '',
-    },
-    {
-      title: 'Telefonnummer',
-      type: 'text',
-      rules: [(v) => v.length > 4 || `Error`],
-      placeholder: 'Velg ønsket dato',
-      value: '',
-    },
-    {
-      title: 'E-post',
-      type: 'text',
-      rules: [(v) => v.length > 4 || `Error`],
-      placeholder: 'Velg ønsket dato',
-      value: '',
-    },
-    {
-      title: 'Regnummer / chasisnr',
-      type: 'text',
-      rules: [(v) => v.length > 4 || `Error`],
-      placeholder: 'Velg ønsket dato',
-      value: '',
-    },
-    {
-      title: 'KM-stand',
-      type: 'text',
-      rules: [(v) => v.length > 4 || `Error`],
-      placeholder: 'Velg ønsket dato',
-      value: '',
-    },
-  ])
+  // const fields = ref([
+  //   {
+  //     title: 'Fult navn',
+  //     type: 'text',
+  //     rules: [(v) => v.length > 4 || `Error`],
+  //     placeholder: 'Velg ønsket dato',
+  //     value: '',
+  //   },
+  //   {
+  //     title: 'Telefonnummer',
+  //     type: 'text',
+  //     rules: [(v) => v.length > 4 || `Error`],
+  //     placeholder: 'Velg ønsket dato',
+  //     value: '+47',
+  //   },
+  //   {
+  //     title: 'E-post',
+  //     type: 'text',
+  //     rules: [(v) => v.length > 4 || `Error`],
+  //     placeholder: 'Velg ønsket dato',
+  //     value: '',
+  //   },
+  //   {
+  //     title: 'Regnummer / chasisnr',
+  //     type: 'text',
+  //     rules: [(v) => v.length > 4 || `Error`],
+  //     placeholder: 'Velg ønsket dato',
+  //     value: '',
+  //   },
+  //   {
+  //     title: 'KM-stand',
+  //     type: 'text',
+  //     rules: [(v) => v.length > 4 || `Error`],
+  //     placeholder: 'Velg ønsket dato',
+  //     value: '',
+  //   },
+  // ])
 </script>
 
 <style lang="scss" scoped>
