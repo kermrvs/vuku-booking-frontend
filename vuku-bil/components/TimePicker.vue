@@ -55,11 +55,14 @@ function selectTime(item,index) {
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
+  //column-gap: 12px;
   gap: 12px;
 
   .time-item {
-    width: 106px;
+    //width: 106px;
     height: 44px;
+    flex: 0 1 calc(33.3% - 8px);
+    //flex-grow: 1;
     background: #FFFFFF;
     border: 1px solid #D0D0D0;
     border-radius: 8px;
@@ -72,12 +75,6 @@ function selectTime(item,index) {
     font-weight: 400;
     font-size: 16px;
     color: #000000;
-
-    &:hover {
-      background: rgba(255, 204, 0, 0.1);
-      border: 1px solid $primary;
-      border-radius: 8px;
-    }
   }
 }
 
